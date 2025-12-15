@@ -1,0 +1,45 @@
+Positive Test Cases (Valid Scenarios)
+
+1. Valid Credentials
+   Input: Correct username and correct password.
+   Expected Result: User successfully logs in and is redirected to the dashboard/home page.
+
+2. Case-Insensitive Username
+   Input: Username entered in different case (e.g., UserName instead of username) with correct password.
+   Expected Result: Login succeeds if the system is case-insensitive for usernames.
+
+3. Leading/Trailing Spaces Trimmed
+   Input: Username or password with extra spaces before/after (e.g., " username ").
+   Expected Result: Spaces are trimmed and login succeeds.
+
+4. Password with Special Characters
+   Input: Correct username and password containing special characters (e.g., P@ssw0rd!).
+   Expected Result: Login succeeds, showing system supports special characters.
+
+5. Session Creation After Login
+   Input: Valid credentials.
+   Expected Result: User is logged in, session/cookie is created, and user remains authenticated until logout.
+
+
+
+Negative Test Cases (Invalid Scenarios)
+
+1. Invalid Username
+   Input: Wrong username with any password.
+   Expected Result: Error message like “Invalid username or password”.
+
+2. Invalid Password
+   Input: Correct username but wrong password.
+   Expected Result: Error message, login denied.
+
+3. Empty Fields
+   Input: Leave username and/or password blank, then click submit.
+   Expected Result: Validation error message like “Username and password are required”.
+
+4. SQL Injection Attempt
+   Input: Username as admin and password as "' OR '1'='1"
+   Expected Result: Login fails, system prevents injection.
+
+5. Exceeding Character Limit
+   Input: Username or password longer than allowed (e.g., 300 characters).
+   Expected Result: Error message or input rejected.
