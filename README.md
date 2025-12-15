@@ -38,4 +38,5 @@ Playwriht configuration is located in `playwright.config.ts`. you can customize 
 
 ## writing test case 
 
-5-positive and 5-negative test cases written in `context.txt`
+5-positive and 5-negative test cases located in `context.txt`
+
