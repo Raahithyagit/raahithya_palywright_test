@@ -1,44 +1,94 @@
 # playwright_test_ui
 This project is an end-to-end (E2E) test automation framework build with [Playwright]. It uses the Page Oject Model design pattern for maintainable and scalable test code.
 
-## Prerequisites 
-- Node.js (>=19.x)
-- npm (>=10.x)
+## Prerequisites
+- Node.js (recommended >= 18)
+- npm (or `pnpm`/`yarn`)
+- Install dependencies: `npm install`
 
-# key Features
-- **playwright** for browser automation 
-- **Page Object Model (POM)** for resuable page logic
-- **Test data** manage in JSON files
-- **custom utility actions** for common interactions
+## Key features
+- Playwright test runner (`@playwright/test`) for reliable browser automation
+- Page Object Model located under `lib/pages` to encapsulate page logic
+- Test files under `tests/e2e` using `.spec.ts` naming convention
+- Test data in `resources/data/*.json`
+- Utility helpers under `lib/utils` (actions, helpers)
+- Playwright config in `playwright.config.ts` for baseURL, projects, and reporters
 
-## git repo
-https://github.com/Raahithyagit/raahithya_palywright_test/tree/master-branch
+## Repository structure (important files/folders)
+- `playwright.config.ts` - Playwright configuration and global settings
+- `tests/e2e/` - Test specs (example: `login.spec.ts`)
+- `lib/pages/` - Page objects (e.g. `lib/pages/e2e/login.page.ts`)
+- `lib/pages/commoon/` - Shared base pages or common components
+- `lib/utils/` - Reusable helper functions (typing helper, wrappers)
+- `resources/data/` - Test data JSON files (e.g. `logindata.json`)
+- `playwright-report/` - Generated Playwright HTML report (after a run)
 
-## how to run tests
-**install all dependencies:**
- npm install
+## How tests are organized
+- Each test file is a suite of related tests (Playwright `test.describe`).
+- Page objects expose operations (e.g. `enterLoginDetails`, `click_On_Submit_btn`) that tests call.
+- Tests should avoid direct selector access and use page object methods instead.
 
-**run all tests:**
+## Common commands
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run all tests:
+
+```bash
 npx playwright test
+```
 
-**Run test in headed mode:**
-npx playwright test --headed
+Run a single test file:
 
-**Show html test report:**
-npx playwright show-report
-
-**Run a specific test file:**
+```bash
 npx playwright test tests/e2e/login.spec.ts
+```
 
-## writing Tests
+Run tests in headed mode (show browser):
 
-Test are located in the `tests` directory. Each test file should have a `.spec.ts` extension.
+```bash
+npx playwright test --headed
+```
 
+Show HTML report:
 
-## configureation
+```bash
+npx playwright show-report
+```
 
-Playwriht configuration is located in `playwright.config.ts`. you can customize browser settings, test directories, and more.
+List discovered tests (useful when Playwright reports "No tests found"):
 
-## writing test case 
+```bash
+npx playwright test --list
+```
+
+Run Playwright with debug UI (inspector):
+
+```bash
+npx playwright test --debug
+```
+
+## Writing page objects
+- Put page classes under `lib/pages/<area>/` and export them (use named export `export class LoginPage` and/or `export default LoginPage`).
+- Constructor should accept a Playwright `Page` instance and store locators as `page.locator(...)`.
+- Page objects should expose high-level async methods for actions and assertions.
+
+Example constructor signature:
+
+```ts
+export class LoginPage {
+	constructor(private page: Page) {}
+}
+```
+
+## Conventions
+- Test files: `*.spec.ts` under `tests/`
+- Page objects: `lib/pages/...` with methods named like `enterUsername`, `clickSubmit`.
+- Test data: `resources/data/*.json` and imported in tests.
+
+ ## writing test case 
 
 5-positive and 5-negative test cases written in `context.txt`
