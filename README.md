@@ -89,6 +89,6 @@ export class LoginPage {
 - Page objects: `lib/pages/...` with methods named like `enterUsername`, `clickSubmit`.
 - Test data: `resources/data/*.json` and imported in tests.
 
- ## writing test case 
+ ## test cases 
 
 5-positive and 5-negative test cases written in `context.txt`
