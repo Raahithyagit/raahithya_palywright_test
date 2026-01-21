@@ -34,6 +34,9 @@ Install dependencies:
 ```bash
 npm install
 ```
+```install browswer
+npx playwright install
+```
 
 Run all tests:
 
