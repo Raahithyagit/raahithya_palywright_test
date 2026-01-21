@@ -92,3 +92,26 @@ export class LoginPage {
  ## test cases 
 
 5-positive and 5-negative test cases written in `context.txt`
+
+
+playwright-framework/
+│
+├── tests/
+│   ├── ui/
+│   │   └── login.spec.ts
+│   ├── api/
+│   │   └── user.api.spec.ts
+│
+├── pages/                # Page Object Model
+│   └── login.page.ts
+│
+├── fixtures/
+│   └── testData.json
+│
+├── utils/
+│   └── helpers.ts
+│
+├── playwright.config.ts
+├── package.json
+└── README.md
+
